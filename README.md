@@ -18,3 +18,11 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+Inspiration
+
+https://codepen.io/kristianrobinson/pen/BWJRpg
+
+- room for disclaimer or instructional text
+- before november all hands, nov 3rd is ideal
+- dog house with cat on top

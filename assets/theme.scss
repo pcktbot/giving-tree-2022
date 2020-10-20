@@ -1,0 +1,13 @@
+$theme-colors: (
+  'secondary': #e9ecef
+);
+$font-family-base: sans-serif;
+$headings-font-family: serif;
+$enable-rounded: false;
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-transitions: true;
+$enable-print-styles: false;
+$bv-enable-table-stacked: false;
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-vue/src/index.scss';
