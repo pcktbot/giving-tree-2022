@@ -11,11 +11,29 @@
       </b-list-group-item>
     </b-list-group>
     <tree @add-gift="added.push($event)" />
+    {{ leaves }}
   </div>
 </template>
 
 <script>
 export default {
+  async asyncData({ $axios }) {
+    const gifts = await $axios.$get('api/gifts')
+    let row = 0
+    const leaves = [[]]
+    for (let i = 0; i < gifts.length; i++) {
+      if (leaves[row].length === -1) {
+        leaves[row] = []
+      }
+      leaves[row].push(gifts[i])
+      if (leaves[row].length <= row + 1) {
+        row++
+      }
+    }
+    return {
+      leaves
+    }
+  },
   data() {
     return {
       added: []

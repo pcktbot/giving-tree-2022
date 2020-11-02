@@ -3,7 +3,8 @@ const express = require('express')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
 const config = require('../nuxt.config.js')
-// const models = require('./models')
+const models = require('./models')
+require('./routes')(app, models)
 config.dev = process.env.NODE_ENV !== 'production'
 
 async function start () {
@@ -17,10 +18,10 @@ async function start () {
   }
 
   app.use(nuxt.render)
-  // models.sequelize
-  //   .sync()
-  //   .then(() => console.log({ message: 'Database Synced', badge: true }))
+  models.sequelize
+    .sync()
+    .then(() => console.log('Database Synced'))
   app.listen(port, host)
-  console.log({ message: `Server listening on http://${host}:${port}` })
+  console.log(`Server listening on http://${host}:${port}`)
 }
 start()
