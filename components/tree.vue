@@ -31,10 +31,18 @@
 
 <script>
 export default {
+  props: {
+    leaves: {
+      type: Array,
+      default() {
+        return this.backup
+      }
+    }
+  },
   data() {
     return {
       // TODO build a function that creates these rows.
-      leaves: [
+      backup: [
         [{
           id: 1,
           color: 'red',

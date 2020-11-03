@@ -1,5 +1,9 @@
 module.exports = {
   telemetry: false,
+  server: {
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 3001
+  },
   head: {
     title: 'giving-tree-2020',
     meta: [
