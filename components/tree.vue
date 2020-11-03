@@ -13,16 +13,16 @@
       <div
         v-for="l in leaf"
         :key="l.id"
-        :class="[{ 'is-active': l.isActive }, l.color]"
+        :class="[{ 'twinkle': l.isActive }, whichColor(l.group)]"
         class="l"
         @click="onClick(l)"
       >
-        <b-icon
+        <!-- <b-icon
           v-if="l.isActive"
           icon="x"
           scale="2em"
           variant="light"
-        />
+        /> -->
       </div>
     </div>
     <div class="trunk" />
@@ -66,6 +66,13 @@ export default {
     }
   },
   methods: {
+    whichColor(g) {
+      return g === 'child'
+        ? 'green'
+        : g === 'pet'
+          ? 'red'
+          : 'blue'
+    },
     onClick(l) {
       l.isActive = !l.isActive
       if (!l.isActive) {
@@ -85,7 +92,7 @@ export default {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #017a68;
+  // background-color: #017a68;
   &:hover {
     background-color: white;
     cursor: pointer;
@@ -94,8 +101,9 @@ export default {
     background-color: black;
   }
 }
-.red { background-color: #e00033; }
-.blue { background-color: #2f38b0; }
+.green { background-color: #017c68; }
+.red { background-color: #990210; }
+.blue { background-color: #01677c; }
 .trunk {
   width: 50px;
   height: 40px;
@@ -103,5 +111,23 @@ export default {
   background-color: #c88d20;
   margin: 0 auto;
   border-radius: 4px;
+}
+.twinkle {
+  transform: rotate(-50deg) skewX(-25deg) scale(.8);
+  animation: twinkle 3s infinite linear;
+}
+@keyframes twinkle {
+  0% { background: #004A7F; box-shadow: 0 0 3px #004A7F; }
+  12% { background: #0094FF; box-shadow: 0 0 10px #0094FF; }
+  23% { background: #004A7F; box-shadow: 0 0 3px #004A7F; }
+  26% { background: #004A7F; box-shadow: 0 0 3px #004A7F; }
+  38% { background: #e7868f; box-shadow: 0 0 10px #e7868f; }
+  50% { background: #e60217; box-shadow: 0 0 3px #e60217; }
+  52% { background: #e7868f; box-shadow: 0 0 10px #e7868f; }
+  62% { background: #ff7800; box-shadow: 0 0 3px #ff7800; }
+  73% { background: #ffea00; box-shadow: 0 0 10px #ffea00; }
+  76% { background: #519600; box-shadow: 0 0 3px #519600; }
+  88% { background: #bafa6f; box-shadow: 0 0 10px #bafa6f; }
+  100% { background: #e7868f; box-shadow: 0 0 3px #e7868f; }
 }
 </style>

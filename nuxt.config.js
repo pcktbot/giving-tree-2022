@@ -16,6 +16,7 @@ module.exports = {
     ]
   },
   css: ['~/assets/theme.scss'],
+  loading: '~/components/loading.vue',
   components: true,
   buildModules: ['@nuxtjs/eslint-module'],
   modules: [

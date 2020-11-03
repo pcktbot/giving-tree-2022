@@ -3,8 +3,8 @@ $theme-colors: (
   'secondary': #e9ecef,
   'dk-taupe': #2d2c27,
   'green': #017b68,
-  'red': #fb001e,
-  'blue': #3606e9
+  'red': #990210,
+  'blue': #01677c
 );
 $font-family-base: sans-serif;
 $headings-font-family: serif;
@@ -16,3 +16,7 @@ $enable-print-styles: false;
 $bv-enable-table-stacked: false;
 @import 'bootstrap/scss/bootstrap.scss';
 @import 'bootstrap-vue/src/index.scss';
+
+.list-group-item + .list-group-item {
+  border-top-width: 4px;
+}

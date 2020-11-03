@@ -1,51 +1,51 @@
 <template>
   <div class="container">
-    <registration @register="onSubmit" />
+    <registration :gifts="added" @register="onSubmit" />
     <tree :leaves="leaves" @add-gift="added.push($event)" />
     <div style="position: relative;">
       <gift-legend />
-    <b-list-group style="max-height: 50vh; overflow-y: scroll;">
-      <b-list-group-item
-        v-for="g in gifts"
-        :key="`added-${g.id}`"
-        :class="[{ 'is-active': g.isActive }]"
-        style="border-radius: 15px;"
-        class="d-flex justify-content-between ml-3 mb-2 gift-list-item bg-taupe"
-      >
-        <div class="inset" />
-        <div class="text-left flex-grow-1">
-          <h2>
-            <b-icon-gift :variant="whichGroup(g.group)" />
-            {{ g.name }}
-          </h2>
-          <b-badge :variant="whichGroup(g.group)" class="px-3">
-            {{ g.group }}
-          </b-badge>
-        </div>
-        <div class="flex-grow-1 text-right" style="max-width: 60%;">
-          <i>
-            {{ g.description }}
-          </i>
-          <pre>
-            {{ g.options }}
-          </pre>
-          <b-form-checkbox
-            v-model="g.isActive"
-            :button-variant="g.isActive ? 'success' : 'secondary'"
-            size="sm"
-            button
-          >
-            <span class="px-3">
-              <b-icon-cart-check-fill v-if="g.isActive" />
-              <b-icon-cart-plus v-else />
-              {{ g.isActive ? 'Added' : 'Add' }}
-            </span>
-          </b-form-checkbox>
-        </div>
+      <b-list-group style="max-height: 50vh; overflow-y: scroll;">
+        <b-list-group-item
+          v-for="g in gifts"
+          :key="`added-${g.id}`"
+          :class="[{ 'is-active': g.isActive }]"
+          style="border-radius: 15px;"
+          class="d-flex justify-content-between mx-3 mb-2 gift-list-item bg-taupe"
+        >
+          <div class="inset" />
+          <div class="text-left flex-grow-1">
+            <h2>
+              <b-icon-gift :variant="whichGroup(g.group)" />
+              {{ g.name }}
+            </h2>
+            <b-badge :variant="whichGroup(g.group)" class="px-3">
+              {{ g.group }}
+            </b-badge>
+          </div>
+          <div class="flex-grow-1 text-right" style="max-width: 60%;">
+            <i>
+              {{ g.description }}
+            </i>
+            <pre>
+              {{ g.options }}
+            </pre>
+            <b-form-checkbox
+              v-model="g.isActive"
+              :button-variant="g.isActive ? 'green' : 'dk-taupe'"
+              size="sm"
+              button
+            >
+              <span class="px-3">
+                <b-icon-cart-check-fill v-if="g.isActive" />
+                <b-icon-cart-plus v-else />
+                {{ g.isActive ? 'Added' : 'Add' }}
+              </span>
+            </b-form-checkbox>
+          </div>
         </b-list-group-item>
       </b-list-group>
     </div>
-    <b-btn variant="outline-dk-taupe" @click="$bvModal.show('register')">
+    <b-btn variant="outline-dk-taupe" @click="preSubmit">
       Claim
     </b-btn>
   </div>
@@ -92,6 +92,10 @@ export default {
         : g === 'pet'
           ? 'red'
           : 'blue'
+    },
+    preSubmit() {
+      this.added = this.gifts.filter(gift => gift.isActive)
+      this.$bvModal.show('register')
     },
     onSubmit() {}
   }
