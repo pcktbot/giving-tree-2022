@@ -26,3 +26,7 @@ https://codepen.io/kristianrobinson/pen/BWJRpg
 - room for disclaimer or instructional text
 - before november all hands, nov 3rd is ideal
 - dog house with cat on top
+
+
+- find better red against green (color blindness).
+- add toggle filter by groups to list.

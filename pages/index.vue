@@ -4,7 +4,7 @@
     <tree :leaves="leaves" @add-gift="added.push($event)" />
     <div style="position: relative;">
       <gift-legend />
-      <b-list-group style="max-height: 50vh; overflow-y: scroll;">
+      <b-list-group style="max-height: 60vh; overflow-y: scroll;">
         <b-list-group-item
           v-for="g in gifts"
           :key="`added-${g.id}`"
