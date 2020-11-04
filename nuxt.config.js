@@ -28,5 +28,7 @@ module.exports = {
     bootstrapVueCSS: false,
     icons: true
   },
-  axios: {}
+  axios: {
+    browserBaseURL: `//${process.env.API}`
+  }
 }
