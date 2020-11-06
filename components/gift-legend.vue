@@ -1,19 +1,19 @@
 <template>
-  <div class="legend">
-    <label class="text-uppercase small text-white text-center">
+  <div class="d-flex align-items-center justify-content-start">
+    <label class="text-uppercase small text-white text-center mb-0">
       Legend
     </label>
-    <div class="d-flex justify-content-end">
-      <div class="pair p-3 text-white">
-        <b-icon-gift-fill variant="green" scale="2em" shift-v="16" />
+    <div class="legend px-1 py-2 bg-dk-taupe flex-grow-1">
+      <div class="text-green" style="font-size: 1.5em;">
+        <b-icon-gift-fill variant="green" />
         Children
       </div>
-      <div class="pair p-3 text-white">
-        <b-icon-gift-fill variant="red" scale="2em" shift-v="16" />
+      <div class="text-light" style="font-size: 1.5em;">
+        <b-icon-gift-fill variant="red" />
         Adults
       </div>
-      <div class="pair p-3 text-white">
-        <b-icon-gift-fill variant="blue" scale="2em" shift-v="16" />
+      <div class="text-blue" style="font-size: 1.5em;">
+        <b-icon-gift-fill variant="blue" />
         Pets
       </div>
     </div>
@@ -22,19 +22,14 @@
 
 <style lang="scss">
 .legend {
-  position: absolute;
   border: 2px solid #2d2c27;
   border-radius: 20px;
-  top: -10px;
-  left: 0%;
-  transform: translate(-50%, -100%);
-  max-width: 50vw;
-  & .pair {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-transform: uppercase;
-    font-size: 0.8em;
-  }
+  max-width: 80%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 0.8em;
 }
 </style>

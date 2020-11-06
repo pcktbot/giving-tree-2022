@@ -2,20 +2,19 @@
   <div class="container">
     <registration :gifts="added" @register="onSubmit" />
     <tree :leaves="leaves" @add-gift="added.push($event)" />
-    <div style="position: relative;">
+    <div>
       <gift-legend />
       <b-list-group style="max-height: 60vh; overflow-y: scroll;">
         <b-list-group-item
           v-for="g in gifts"
           :key="`added-${g.id}`"
-          :class="[{ 'is-active': g.isActive }]"
+          :class="[{ 'is-active': g.isActive }, `bg-${whichGroup(g.group)}`]"
           style="border-radius: 15px;"
-          class="d-flex justify-content-between mx-3 mb-2 gift-list-item bg-taupe"
+          class="d-flex justify-content-between mx-3 mb-2 gift-list-item"
         >
           <div class="inset" />
           <div class="text-left flex-grow-1">
             <h2>
-              <b-icon-gift :variant="whichGroup(g.group)" />
               {{ g.name }}
             </h2>
             <b-badge :variant="whichGroup(g.group)" class="px-3">
@@ -44,10 +43,18 @@
           </div>
         </b-list-group-item>
       </b-list-group>
+      <div>
+        <b-btn
+          variant="dk-taupe"
+          block
+          pill
+          style="box-shadow: 0 -5px 20px rgba(10, 10, 10, 0.5);"
+          @click="preSubmit"
+        >
+          Claim Selected
+        </b-btn>
+      </div>
     </div>
-    <b-btn variant="outline-dk-taupe" @click="preSubmit">
-      Claim
-    </b-btn>
   </div>
 </template>
 
@@ -62,14 +69,14 @@ export default {
         leaves.push([])
       }
       if (leaves[row].length <= row + 1) {
-        leaves[row].push({ ...gifts[i], isActive: false })
+        leaves[row].push({ ...gifts[i], isActive: gifts[i].claimed })
       } else {
         row++
       }
     }
     return {
       leaves,
-      gifts
+      gifts: gifts.filter(gift => gift.claimed !== true)
     }
   },
   data() {
@@ -78,14 +85,6 @@ export default {
     }
   },
   methods: {
-    add(g) {
-      g.isActive = true
-      this.added.push(g)
-    },
-    remove(g) {
-      const i = this.added.findIndex(a => a.id === g.id)
-      this.added.splice(i, 0)
-    },
     whichGroup(g) {
       return g === 'child'
         ? 'green'
@@ -97,7 +96,23 @@ export default {
       this.added = this.gifts.filter(gift => gift.isActive)
       this.$bvModal.show('register')
     },
-    onSubmit() {}
+    onSuccess(res) {
+      this.$emit('api-response', res)
+    },
+    async onSubmit(payload) {
+      try {
+        const { email, name } = payload
+        const res = await this.$axios.$post('api/claim', {
+          email,
+          name,
+          gifts: this.added
+        })
+        this.onSuccess(res)
+      } catch (error) {
+        console.error(error)
+        this.onSuccess(error)
+      }
+    }
   }
 }
 </script>
@@ -119,8 +134,11 @@ body {
 .gift-list-item {
   transition: 200ms ease;
   border: 4px solid #2d2c27;
+  transform: translateY(0) translateZ(0) scale(1);
   &:hover {
-    transform: translateX(-10px);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+    transform: translateY(-5px) translateZ(0) scale(1);
   }
   & .inset {
     border: 4px solid #2d2c27;

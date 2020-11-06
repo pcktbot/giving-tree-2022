@@ -1,13 +1,14 @@
 $theme-colors: (
   'taupe': #ebe1c9,
+  'ocre': #c88d21,
   'secondary': #e9ecef,
   'dk-taupe': #2d2c27,
   'green': #017b68,
   'red': #e8e8e8,
   'blue': #01677c
 );
-$font-family-base: sans-serif;
-$headings-font-family: serif;
+$font-family-base: 'Handlee', cursive;
+$headings-font-family: 'Henny Penny', cursive;
 $enable-rounded: false;
 $enable-shadows: false;
 $enable-gradients: false;

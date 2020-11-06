@@ -2,8 +2,9 @@
   <div>
     <b-icon
       icon="star-fill"
-      variant="secondary"
-      scale="2em"
+      variant="ocre"
+      scale="3em"
+      shift-v="8"
     />
     <div
       v-for="(leaf, i) in leaves"
@@ -25,7 +26,15 @@
         /> -->
       </div>
     </div>
-    <div class="trunk" />
+    <div class="rug">
+      <div class="trunk" />
+      <div class="rug__gift gift-3">
+        <b-icon-gift-fill variant="dk-taupe" scale="3em" />
+      </div>
+      <div class="rug__gift gift-1">
+        <b-icon-gift-fill variant="white" scale="3.5em" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -110,11 +119,38 @@ export default {
   border: 1px solid #c88d20;
   background-color: #c88d20;
   margin: 0 auto;
-  border-radius: 4px;
+  border-radius: 4px 4px 20% 20%;
+  transform: translateY(-20px);
+  // box-shadow: 0 20px 10px rgba(10, 10, 10, 0.5);
+}
+.rug {
+  width: 100%;
+  height: 40px;
+  background: #8c0020;
+  border-radius: 50%;
+  // box-shadow: 0 20px 50px rgba(10, 10, 10, 0.25);
+  transform: translateY(20px);
+  position: relative;
+  &__gift {
+    position: absolute;
+    &.gift-1 {
+      left: 10%;
+      transform: translate(-10%, -70%);
+    }
+    &.gift-3 {
+      left: 20%;
+      top: -10%;
+      transform: translate(-10%, -20%);
+    }
+  }
 }
 .twinkle {
   transform: rotate(-50deg) skewX(-25deg) scale(.8);
-  animation: twinkle 3s infinite linear;
+  animation: twinkle infinite linear;
+  &.one {
+    animation-duration: 1s;
+  }
+  animation-duration: 3s;
 }
 @keyframes twinkle {
   0% { background: #004A7F; box-shadow: 0 0 3px #004A7F; }

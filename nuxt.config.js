@@ -12,7 +12,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { href: 'https://fonts.googleapis.com/css2?family=Handlee&family=Henny+Penny&display=swap', rel: 'stylesheet' }
     ]
   },
   css: ['~/assets/theme.scss'],
