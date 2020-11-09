@@ -1,8 +1,8 @@
 module.exports = {
   telemetry: false,
   server: {
-    host: process.env.HOST || 'localhost',
-    port: process.env.PORT || 3001
+    host: process.env.HOST || '0.0.0.0',
+    port: process.env.PORT || 5000
   },
   head: {
     title: 'giving-tree-2020',
