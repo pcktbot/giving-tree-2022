@@ -13,11 +13,11 @@
           class="d-flex justify-content-between mx-3 mb-2 gift-list-item"
         >
           <div class="inset" />
-          <div class="text-left flex-grow-1">
-            <h2>
+          <div class="text-left flex-grow-1 d-flex flex-column">
+            <h2 class="flex-grow-1">
               {{ g.name }}
             </h2>
-            <b-badge :variant="whichGroup(g.group)" class="px-3">
+            <b-badge :variant="whichGroup(g.group)" class="text-left">
               {{ g.group }}
             </b-badge>
           </div>
@@ -96,18 +96,35 @@ export default {
       this.added = this.gifts.filter(gift => gift.isActive)
       this.$bvModal.show('register')
     },
-    onSuccess(res) {
-      this.$emit('api-response', res)
+    async onSuccess(err) {
+      if (err) {
+        alert(err)
+      }
+      const gifts = await this.$axios.$get('api/gifts')
+      let row = 0
+      const leaves = []
+      for (let i = 0; i < gifts.length; i++) {
+        if (leaves.length === row) {
+          leaves.push([])
+        }
+        if (leaves[row].length <= row + 1) {
+          leaves[row].push({ ...gifts[i], isActive: gifts[i].claimed })
+        } else {
+          row++
+        }
+      }
+      this.leaves = leaves
+      this.gifts = gifts.filter(gift => gift.claimed !== true)
     },
     async onSubmit(payload) {
       try {
         const { email, name } = payload
-        const res = await this.$axios.$post('api/claim', {
+        await this.$axios.$post('api/claim', {
           email,
           name,
           gifts: this.added
         })
-        this.onSuccess(res)
+        this.onSuccess()
       } catch (error) {
         console.error(error)
         this.onSuccess(error)

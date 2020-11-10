@@ -18,14 +18,14 @@
       label-cols="3"
       label-class="text-ocre"
     >
-      <b-form-input v-model.trim="name" />
+      <b-form-input v-model.trim="name" :state="isName" required />
     </b-form-group>
     <b-form-group
       label="Email"
       label-cols="3"
       label-class="text-ocre"
     >
-      <b-form-input v-model.trim="email" />
+      <b-form-input v-model.trim="email" :state="isEmail" required />
     </b-form-group>
     <p class="font-weight-bold h2 mb-2 text-ocre">
       Here are you selections.
@@ -56,6 +56,18 @@ export default {
       name: null
     }
   },
+  computed: {
+    isName() {
+      return this.name === null
+        ? null
+        : this.name !== ''
+    },
+    isEmail() {
+      return this.email === null
+        ? null
+        : this.email !== ''
+    }
+  },
   methods: {
     whichGroup(g) {
       return g === 'child'
@@ -67,7 +79,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
