@@ -4,18 +4,25 @@
       Legend
     </label>
     <div class="legend px-1 py-2 bg-dk-taupe flex-grow-1">
-      <div class="text-green" style="font-size: 1.5em;">
+      <b-btn variant="transparent" class="text-light" style="font-size: 1.5em;" @click="$emit('on-selected', 'all')">
+        <b-iconstack>
+          <b-icon-gift-fill variant="light" stacked scale="0.6em" shift-h="4" shift-v="4" />
+          <b-icon-gift-fill variant="light" stacked scale="0.6em" shift-h="-4" shift-v="-4" />
+        </b-iconstack>
+        All
+      </b-btn>
+      <b-btn variant="transparent" class="text-green" style="font-size: 1.5em;" @click="$emit('on-selected', 'child')">
         <b-icon-gift-fill variant="green" />
         Children
-      </div>
-      <div class="text-light" style="font-size: 1.5em;">
-        <b-icon-gift-fill variant="red" />
-        Adults
-      </div>
-      <div class="text-blue" style="font-size: 1.5em;">
+      </b-btn>
+      <b-btn variant="transparent" class="text-blue" style="font-size: 1.5em;" @click="$emit('on-selected', 'adult')">
         <b-icon-gift-fill variant="blue" />
+        Adults
+      </b-btn>
+      <b-btn variant="transparent" class="text-light" style="font-size: 1.5em;" @click="$emit('on-selected', 'pet')">
+        <b-icon-gift-fill variant="light" />
         Pets
-      </div>
+      </b-btn>
     </div>
   </div>
 </template>

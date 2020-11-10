@@ -3,7 +3,7 @@
     <registration :gifts="added" @register="onSubmit" />
     <tree :leaves="leaves" @add-gift="added.push($event)" />
     <div>
-      <gift-legend />
+      <gift-legend @on-selected="onFilter" />
       <b-list-group style="max-height: 60vh; overflow-y: scroll;">
         <b-list-group-item
           v-for="g in gifts"
@@ -17,14 +17,14 @@
             <h2 class="flex-grow-1">
               {{ g.name }}
             </h2>
-            <b-badge :variant="whichGroup(g.group)" class="text-left">
+            <p class="text-left">
               {{ g.group }}
-            </b-badge>
+            </p>
           </div>
           <div class="flex-grow-1 text-right" style="max-width: 60%;">
-            <i>
+            <p class="my-2">
               {{ g.description }}
-            </i>
+            </p>
             <pre>
               {{ g.options }}
             </pre>
@@ -76,7 +76,8 @@ export default {
     }
     return {
       leaves,
-      gifts: gifts.filter(gift => gift.claimed !== true)
+      gifts: gifts.filter(gift => gift.claimed !== true),
+      backup: gifts.filter(gift => gift.claimed !== true)
     }
   },
   data() {
@@ -95,6 +96,13 @@ export default {
     preSubmit() {
       this.added = this.gifts.filter(gift => gift.isActive)
       this.$bvModal.show('register')
+    },
+    onFilter(evt) {
+      if (evt === 'all') {
+        this.gifts = this.backup
+      } else {
+        this.gifts = this.backup.filter(gift => gift.group === evt)
+      }
     },
     async onSuccess(err) {
       if (err) {
@@ -115,6 +123,7 @@ export default {
       }
       this.leaves = leaves
       this.gifts = gifts.filter(gift => gift.claimed !== true)
+      this.backup = gifts.filter(gift => gift.claimed !== true)
     },
     async onSubmit(payload) {
       try {
@@ -152,10 +161,11 @@ body {
   transition: 200ms ease;
   border: 4px solid #2d2c27;
   transform: translateY(0) translateZ(0) scale(1);
+  // box-shadow: 0 0 20px rgba(10, 10, 10, 0.5);
   &:hover {
     backface-visibility: hidden;
     -webkit-font-smoothing: subpixel-antialiased;
-    transform: translateY(-5px) translateZ(0) scale(1);
+    transform: translateY(0) translateZ(0) scale(1);
   }
   & .inset {
     border: 4px solid #2d2c27;
