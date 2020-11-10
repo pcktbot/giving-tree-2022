@@ -1,16 +1,49 @@
 <template>
   <b-modal
-    ref="register"
     id="register"
+    ref="register"
+    body-bg-variant="dk-taupe"
+    footer-bg-variant="dk-taupe"
+    footer-border-variant="dk-taupe"
+    hide-header
+    button-size="lg"
+    ok-variant="ocre"
+    cancel-variant="outline-tertiary"
+    centered
+    size="lg"
     @ok="$emit('register', { email, name })"
   >
-    <b-input-group prepend="Name">
-      <b-form-input v-model="name" />
-    </b-input-group>
-    <b-input-group prepend="Email">
-      <b-form-input v-model="email" />
-    </b-input-group>
-    {{ gifts }}
+    <b-form-group
+      label="Name"
+      label-cols="3"
+      label-class="text-ocre"
+    >
+      <b-form-input v-model.trim="name" />
+    </b-form-group>
+    <b-form-group
+      label="Email"
+      label-cols="3"
+      label-class="text-ocre"
+    >
+      <b-form-input v-model.trim="email" />
+    </b-form-group>
+    <p class="font-weight-bold h2 mb-2 text-ocre">
+      Here are you selections.
+    </p>
+    <b-card-group deck>
+      <b-card
+        v-for="(gift, i) in gifts"
+        :key="`gift-${i}`"
+        :bg-variant="whichGroup(gift.group)"
+        class="text-center"
+        style="border-radius: 20px; border-width: 3px;"
+      >
+        <h4>
+          <b-icon-gift-fill />
+          {{ gift.name }}
+        </h4>
+      </b-card>
+    </b-card-group>
   </b-modal>
 </template>
 
@@ -21,6 +54,15 @@ export default {
     return {
       email: null,
       name: null
+    }
+  },
+  methods: {
+    whichGroup(g) {
+      return g === 'child'
+        ? 'green'
+        : g === 'pet'
+          ? 'red'
+          : 'blue'
     }
   }
 }

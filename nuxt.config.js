@@ -13,7 +13,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { href: 'https://fonts.googleapis.com/css2?family=Handlee&family=Henny+Penny&display=swap', rel: 'stylesheet' }
+      { href: 'https://fonts.googleapis.com/css2?family=Nunito&family=Roboto+Slab&display=swap', rel: 'stylesheet' }
     ]
   },
   css: ['~/assets/theme.scss'],

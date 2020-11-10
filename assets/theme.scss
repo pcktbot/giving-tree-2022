@@ -5,10 +5,11 @@ $theme-colors: (
   'dk-taupe': #2d2c27,
   'green': #017b68,
   'red': #e8e8e8,
+  'tertiary': #e00033,
   'blue': #01677c
 );
-$font-family-base: 'Handlee', cursive;
-$headings-font-family: 'Henny Penny', cursive;
+$font-family-base: 'Nunito', sans-serif;
+$headings-font-family: 'Roboto Slab', serif;
 $enable-rounded: false;
 $enable-shadows: false;
 $enable-gradients: false;

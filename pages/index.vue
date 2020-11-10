@@ -45,7 +45,7 @@
       </b-list-group>
       <div>
         <b-btn
-          variant="dk-taupe"
+          variant="ocre"
           block
           pill
           style="box-shadow: 0 -5px 20px rgba(10, 10, 10, 0.5);"

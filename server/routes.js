@@ -1,4 +1,6 @@
-const models = require("./models")
+const models = require('./models')
+const mailer = require('./mailer')
+
 module.exports = (app) => {
   app.get('/api/gifts', async (req, res) => {
     try {
@@ -18,8 +20,9 @@ module.exports = (app) => {
       })
       for (let i = 0; i < gifts.length; i++) {
         const gift = await models.gift.findOne({ where: { id: gifts[i].id } })
-        await gift.update({ claimed: true })
+        await gift.update({ claimed: true, gifter: email })
       }
+      mailer.send(gifts, email, name)
       res.sendStatus(201)
     } catch (error) {
       res.sendStatus(503)

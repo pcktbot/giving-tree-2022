@@ -22,6 +22,9 @@ module.exports = (sequelize) => {
     description: {
       type: STRING
     },
+    gifter: {
+      type: STRING
+    },
     claimed: {
       type: BOOLEAN,
       default: false
