@@ -5,7 +5,8 @@ module.exports = (app) => {
   app.get('/api/gifts', async (req, res) => {
     try {
       const gifts = await models.gift.findAll()
-      res.status(200).json(gifts)
+      const shuffledGifts = shuffle(gifts)
+      res.status(200).json(shuffledGifts)
     } catch (err) {
       res.status(500).send(err)
     }
@@ -28,4 +29,16 @@ module.exports = (app) => {
       res.sendStatus(503)
     }
   })
+}
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffle (array) {
+  var currentIndex = array.length, temporaryValue, randomIndex
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex -= 1
+    temporaryValue = array[currentIndex]
+    array[currentIndex] = array[randomIndex]
+    array[randomIndex] = temporaryValue
+  }
+  return array
 }

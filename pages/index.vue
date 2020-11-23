@@ -4,7 +4,7 @@
     <tree :leaves="leaves" @add-gift="added.push($event)" />
     <div>
       <gift-legend @on-selected="onFilter" />
-      <b-list-group style="max-height: 60vh; overflow-y: scroll;">
+      <b-list-group style="max-height: 60vh; max-width: 700px; width: 60vw; overflow-y: scroll;">
         <b-list-group-item
           v-for="g in gifts"
           :key="`added-${g.id}`"
@@ -13,21 +13,24 @@
           class="d-flex justify-content-between mx-3 mb-2 gift-list-item"
         >
           <div class="inset" />
-          <div class="text-left flex-grow-1 d-flex flex-column">
-            <h2 class="flex-grow-1">
+          <div class="text-left d-flex flex-column" style="flex: 0 1 40%;">
+            <h4 class="">
               {{ g.name }}
-            </h2>
+            </h4>
             <p class="text-left">
               {{ g.group }}
             </p>
           </div>
-          <div class="flex-grow-1 text-right" style="max-width: 60%;">
+          <div class="text-right" style="flex: 0 1 60%;">
             <p class="my-2">
               {{ g.description }}
             </p>
-            <pre>
-              {{ g.options }}
-            </pre>
+            <p v-if="g.options">
+              {{ g.options.name }}
+              <a v-if="g.options.wishlist" :href="g.options.wishlist" target="_blank">
+                Amazon Wishlist
+              </a>
+            </p>
             <b-form-checkbox
               v-model="g.isActive"
               :button-variant="g.isActive ? 'green' : 'dk-taupe'"
@@ -86,10 +89,21 @@ export default {
     }
   },
   methods: {
+    onOptions(options) {
+      const opts = JSON.parse(options)
+      return `
+        <p>
+          ${opts.name}
+        </p>
+        <a href="${opts.wishlist}">
+          ${opts.wishlist}
+        </a>
+      `
+    },
     whichGroup(g) {
-      return g === 'child'
+      return g === 'families'
         ? 'green'
-        : g === 'pet'
+        : g === 'pets'
           ? 'red'
           : 'blue'
     },
@@ -135,7 +149,6 @@ export default {
         })
         this.onSuccess()
       } catch (error) {
-        console.error(error)
         this.onSuccess(error)
       }
     }

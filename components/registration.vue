@@ -30,8 +30,26 @@
     <p class="font-weight-bold h2 mb-2 text-ocre">
       Here are you selections.
     </p>
-    <b-card-group deck>
-      <b-card
+    <b-card bg-variant="light" no-body>
+      <b-table
+        :fields="[{ key:'name', label: 'Gift' }, 'options', 'description', 'group']"
+        :items="gifts"
+        responsive
+        small
+      >
+        <template v-slot:cell(options)="{ item }">
+          <span v-if="item.options">
+            <p>
+              Name: {{ item.options.name }}
+            </p>
+            <a :href="item.options.wishlist">
+              {{ item.options.wishlist }}
+            </a>
+          </span>
+        </template>
+      </b-table>
+    </b-card>
+      <!-- <b-card
         v-for="(gift, i) in gifts"
         :key="`gift-${i}`"
         :bg-variant="whichGroup(gift.group)"
@@ -41,9 +59,8 @@
         <h4>
           <b-icon-gift-fill />
           {{ gift.name }}
-        </h4>
+        </h4> -->
       </b-card>
-    </b-card-group>
   </b-modal>
 </template>
 
@@ -66,15 +83,9 @@ export default {
       return this.email === null
         ? null
         : this.email !== ''
-    }
-  },
-  methods: {
-    whichGroup(g) {
-      return g === 'child'
-        ? 'green'
-        : g === 'pet'
-          ? 'red'
-          : 'blue'
+    },
+    isReady() {
+      return this.email !== '' && this.name !== ''
     }
   }
 }
