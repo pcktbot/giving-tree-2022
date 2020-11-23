@@ -30,3 +30,8 @@ https://codepen.io/kristianrobinson/pen/BWJRpg
 
 - find better red against green (color blindness).
 - add toggle filter by groups to list.
+
+- make disclaimer bigger
+- add link to Venmo
+
+- if you're having trouble slack Kayla link.

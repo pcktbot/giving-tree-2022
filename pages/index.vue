@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <registration :gifts="added" @register="onSubmit" />
-    <div class="fixed-top">
+    <div class="fixed-top bg-dk-taupe">
       <h1 class="font-weight-bold d-flex align-items-center justify-content-center text-light">
         <b-img src="/g5-logo.png" class="mr-2" />
         Giving Tree
       </h1>
       <i class="text-white">
-        Please be sure to purchase your gift(s) by 12/11/20!
+        Please be sure to purchase your gift(s) by 12/11/20! We are also collecting funds so that we can purchase any unclaimed gifts. Want to contribute?  Send money to Kelly Janes via: venmo (kellyclarejanes), Zelle or Paypal.
       </i>
     </div>
     <tree :leaves="leaves" @add-gift="added.push($event)" />
@@ -70,6 +70,15 @@
           Claim Selected
         </b-btn>
       </div>
+    </div>
+    <div class="fixed-bottom text-ocre">
+      <p>
+        If you have any questions or need assistance using the G5 Giving Tree, please reach out to Kayla Bluhm via Slack or email
+        <a href="mailto:kayla.bluhm@getg5.com">
+          kayla.bluhm@getg5.com
+        </a>
+        .
+      </p>
     </div>
   </div>
 </template>
@@ -188,7 +197,14 @@ body {
   top: 0;
   left: 50%;
   padding: 0.5em 1.5em;
-  // width: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+}
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  padding: 0.5em 1.5em;
   transform: translateX(-50%);
 }
 .gift-list-item {
