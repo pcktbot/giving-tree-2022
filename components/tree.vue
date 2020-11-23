@@ -76,9 +76,9 @@ export default {
   },
   methods: {
     whichColor(g) {
-      return g === 'child'
+      return g === 'families'
         ? 'green'
-        : g === 'pet'
+        : g === 'pets'
           ? 'red'
           : 'blue'
     },
