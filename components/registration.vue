@@ -49,18 +49,6 @@
         </template>
       </b-table>
     </b-card>
-      <!-- <b-card
-        v-for="(gift, i) in gifts"
-        :key="`gift-${i}`"
-        :bg-variant="whichGroup(gift.group)"
-        class="text-center"
-        style="border-radius: 20px; border-width: 3px;"
-      >
-        <h4>
-          <b-icon-gift-fill />
-          {{ gift.name }}
-        </h4> -->
-      </b-card>
   </b-modal>
 </template>
 
@@ -82,7 +70,7 @@ export default {
     isEmail() {
       return this.email === null
         ? null
-        : this.email !== ''
+        : /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(this.email)
     },
     isReady() {
       return this.email !== '' && this.name !== ''

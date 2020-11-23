@@ -1,6 +1,15 @@
 <template>
   <div class="container">
     <registration :gifts="added" @register="onSubmit" />
+    <div class="fixed-top">
+      <h1 class="font-weight-bold d-flex align-items-center justify-content-center text-light">
+        <b-img src="/g5-logo.png" class="mr-2" />
+        Giving Tree
+      </h1>
+      <i class="text-white">
+        Please be sure to purchase your gift(s) by 12/11/20!
+      </i>
+    </div>
     <tree :leaves="leaves" @add-gift="added.push($event)" />
     <div>
       <gift-legend @on-selected="onFilter" />
@@ -169,6 +178,14 @@ body {
   align-items: center;
   text-align: center;
   // position: relative;
+}
+.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  padding: 0.5em 1.5em;
+  // width: 50%;
+  transform: translateX(-50%);
 }
 .gift-list-item {
   transition: 200ms ease;
