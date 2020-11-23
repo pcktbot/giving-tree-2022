@@ -37,8 +37,12 @@
             <p v-if="g.options">
               {{ g.options.name }}
               <a v-if="g.options.wishlist" :href="g.options.wishlist" target="_blank">
-                Amazon Wishlist
+                Amazon Wishlist*
               </a>
+              <br>
+              <strong class="text-white">
+                *Please make sure to claim the tag before purchasing the items via the wishlist.
+              </strong>
             </p>
             <b-form-checkbox
               v-model="g.isActive"
