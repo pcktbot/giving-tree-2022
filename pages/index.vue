@@ -7,7 +7,7 @@
         Giving Tree
       </h1>
       <i class="text-white">
-        Please be sure to purchase your gift(s) by 12/11/20! We are also collecting funds so that we can purchase any unclaimed gifts. Want to contribute?  Send money to Kelly Janes via: venmo (kellyclarejanes), Zelle or Paypal.
+        Please be sure to purchase your gift(s) by 12/11/20! We are also collecting funds so that we can purchase any unclaimed gifts. Want to contribute?  Send money to Kelly Janes via: venmo (kellyclarejanes), Zelle or Paypal. Please reflect G5 Giving Tree in the comments.
       </i>
     </div>
     <tree :leaves="leaves" @add-gift="added.push($event)" />
