@@ -31,7 +31,10 @@ const sequelize = new Sequelize(dbUrl, {
     evict: evictTest
   },
   dialectOptions: {
-    ssl: (ssl === 'true') ? { ca, cert, key } : false
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
   },
   logging: (logging === 'true')
 })
