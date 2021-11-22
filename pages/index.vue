@@ -73,11 +73,7 @@
     </div>
     <div class="fixed-bottom text-ocre">
       <p>
-        If you have any questions or need assistance using the G5 Giving Tree, please reach out to Kayla Bluhm via Slack or email
-        <a href="mailto:kayla.bluhm@getg5.com">
-          kayla.bluhm@getg5.com
-        </a>
-        .
+      Please be sure to have all purchased gifts delivered or dropped off at the G5 Office by 12/10/2021. Amanda will be in office to receive deliveries. Office address: 360 SW Bond St Ste. 200, Bend, OR 97702
       </p>
     </div>
   </div>
