@@ -7,7 +7,7 @@
         Giving Tree
       </h1>
       <i class="text-white">
-        Please be sure to have all purchased gifts delivered or dropped off at the G5 Office by 12/10/2021. Amanda will be in office to receive deliveries. Office address: 360 SW Bond St Ste. 200, Bend, OR 97702
+        Please be sure to have all purchased gifts delivered or dropped off at the G5 Office by 12/10/2021. Amanda will be in office to receive deliveries.<br />Office address: 360 SW Bond St Ste. 200, Bend, OR 97702
       </i>
     </div>
     <tree :leaves="leaves" @add-gift="added.push($event)" />
