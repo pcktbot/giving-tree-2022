@@ -35,3 +35,5 @@ https://codepen.io/kristianrobinson/pen/BWJRpg
 - add link to Venmo
 
 - if you're having trouble slack Kayla link.
+
+- still in use, committing to kick off heroku upgrade.
