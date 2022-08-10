@@ -11,6 +11,9 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js"
   },
+  "engines": {
+    "node": "12.10.1"
+  },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
     "@sendgrid/mail": "^7.4.0",
