@@ -123,11 +123,9 @@ export default {
       `
     },
     whichGroup(g) {
-      return g === 'families'
+      return g === 'Family'
         ? 'green'
-        : g === 'pets'
-          ? 'red'
-          : 'blue'
+        : 'red'
     },
     preSubmit() {
       this.added = this.gifts.filter(gift => gift.isActive)
