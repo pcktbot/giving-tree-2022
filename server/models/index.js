@@ -31,10 +31,10 @@ const sequelize = new Sequelize(dbUrl, {
     evict: evictTest
   },
   dialectOptions: {
-    ssl: {
+    ssl: ssl === 'true' ? {
       require: true,
       rejectUnauthorized: false
-    }
+    } : false
   },
   logging: (logging === 'true')
 })

@@ -7,7 +7,7 @@
         Giving Tree
       </h1>
       <i class="text-white">
-        Please be sure to have all purchased gifts delivered or dropped off at the G5 Office by 12/10/2021. Amanda will be in office to receive deliveries.<br />Office address: 360 SW Bond St Ste. 200, Bend, OR 97702
+        Please be sure to have all purchased gifts delivered or dropped off at the G5 Office by 12/12/2022. Bridgette will be in office to receive deliveries.<br />Office address: 360 SW Bond St Ste. 200, Bend, OR 97702
       </i>
     </div>
     <tree :leaves="leaves" @add-gift="added.push($event)" />
@@ -73,9 +73,9 @@
     </div>
     <div class="fixed-bottom text-ocre">
       <p>
-        If you have any questions or need assistance using the G5 Giving Tree, please reach out to Kayla Bluhm via Slack or email
-        <a href="mailto:kayla.bluhm@getg5.com">
-          kayla.bluhm@getg5.com
+        If you have any questions or need assistance using the G5 Giving Tree, please reach out to Bridgette via Teams or email
+        <a href="mailto:bridgette.montgomery@getg5.com">
+          bridgette.montgomery@getg5.com
         </a>
         .
       </p>
