@@ -11,17 +11,13 @@
         </b-iconstack>
         All
       </b-btn>
-      <b-btn variant="transparent" class="text-green" style="font-size: 1.5em;" @click="$emit('on-selected', 'families')">
-        <b-icon-gift-fill variant="green" />
+      <b-btn variant="transparent" class="text-blue" style="font-size: 1.5em;" @click="$emit('on-selected', 'Family')">
+        <b-icon-gift-fill variant="blue" />
         Family
       </b-btn>
-      <b-btn variant="transparent" class="text-blue" style="font-size: 1.5em;" @click="$emit('on-selected', 'seniors')">
-        <b-icon-gift-fill variant="blue" />
+      <b-btn variant="transparent" class="text-tertiary" style="font-size: 1.5em;" @click="$emit('on-selected', 'Seniors')">
+        <b-icon-gift-fill variant="tertiary" />
         Seniors
-      </b-btn>
-      <b-btn variant="transparent" class="text-light" style="font-size: 1.5em;" @click="$emit('on-selected', 'pets')">
-        <b-icon-gift-fill variant="light" />
-        Pets
       </b-btn>
     </div>
   </div>

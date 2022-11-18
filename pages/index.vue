@@ -3,7 +3,7 @@
     <registration :gifts="added" @register="onSubmit" />
     <div class="fixed-top bg-dk-taupe">
       <h1 class="font-weight-bold d-flex align-items-center justify-content-center text-light">
-        <b-img src="/g5-logo.png" class="mr-2" />
+        <b-img src="/g5-logo.png" class="mr-2" height="30" />
         Giving Tree
       </h1>
       <i class="text-white">
@@ -124,8 +124,8 @@ export default {
     },
     whichGroup(g) {
       return g === 'Family'
-        ? 'green'
-        : 'red'
+        ? 'blue'
+        : 'tertiary'
     },
     preSubmit() {
       this.added = this.gifts.filter(gift => gift.isActive)
