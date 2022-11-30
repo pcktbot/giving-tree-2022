@@ -36,7 +36,7 @@ module.exports = {
         },
         subject: 'Giving Tree Selections',
         html: createGiftTemplate(gifts, toName)
-      })
+      }).then(res => console.log(res))
     } catch (error) {
       console.error(error)
     }

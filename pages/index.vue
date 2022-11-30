@@ -7,7 +7,9 @@
         Giving Tree
       </h1>
       <i class="text-white">
-        Please be sure to have all purchased gifts delivered or dropped off at the G5 Office by 12/12/2022. Bridgette will be in office to receive deliveries.<br />Office address: 360 SW Bond St Ste. 200, Bend, OR 97702
+        Hi ALL, When ordering on Amazon or other websites please be sure to update your shipping instructions to say, <br />"M-F 6:30am to 5:00pm, Leave at Reception Desk"<br />
+        If you are personally bringing a gift to the office, please reach out to me on TEAMS.
+        Office address: 360 SW Bond St Ste. 200, Bend, OR 97702
       </i>
     </div>
     <tree :leaves="leaves" @add-gift="added.push($event)" />
